@@ -8,7 +8,7 @@ const weChatBot = WechatyBuilder.build({
 });
 // ChatGPTBot instance
 const chatGPTBot = new ChatGPTBot();
-const time =  Date.now()
+const time = new Date()
 async function main() {
   weChatBot
     // scan QR code for login
