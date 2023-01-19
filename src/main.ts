@@ -8,7 +8,7 @@ const weChatBot = WechatyBuilder.build({
 });
 // ChatGPTBot instance
 const chatGPTBot = new ChatGPTBot();
-
+const time =  Date.now()
 async function main() {
   weChatBot
     // scan QR code for login
@@ -31,8 +31,8 @@ async function main() {
         console.log(`📨 ${message}`);
         // add your own task handlers over here to expand the bot ability!
         // e.g. if a message starts with "Hello", the bot sends "World!"
-        if (message.text().startsWith("Hello")) {
-          await message.say("World!");
+        if (message.text().startsWith("时间")) {
+          await message.say(time);
           return;
         }
         // handle message for chatGPT bot
