@@ -135,13 +135,26 @@ export class ChatGPTBot {
   // send question to ChatGPT with OpenAI API and get answer
   async onChatGPT(text: string): Promise<string> {
     const inputMessage = this.applyContext(text);
+    const time = new Date();
+    const year = time.getFullYear();
+    const month = time.getMonth() + 1; //月份从0开始
+    const day = time.getDate();
+    const week = time.getDay();
+    const weekList = ["星期天","星期一","星期二","星期三","星期四","星期五","星期六"]
+    const weekName = weekList[week];
+    const formatTime = `${year}年${month}月${day}日${weekName}`;
     try {
       // config OpenAI API request body
+   
       const response = await this.OpenAI.createCompletion({
         ...ChatGPTModelConfig,
         prompt: inputMessage,
       });
       // use OpenAI API to get ChatGPT reply message
+      if (inputMessage.includes("时间")) {
+        return formatTime;
+    } 
+
       const chatgptReplyMessage = response?.data?.choices[0]?.text?.trim();
       console.log("🤖️ Chatbot says: ", chatgptReplyMessage);
       return chatgptReplyMessage;
