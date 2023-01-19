@@ -8,7 +8,14 @@ const weChatBot = WechatyBuilder.build({
 });
 // ChatGPTBot instance
 const chatGPTBot = new ChatGPTBot();
-const time = new Date()
+const time = new Date();
+const year = time.getFullYear();
+const month = time.getMonth() + 1; //月份从0开始
+const day = time.getDate();
+const week = time.getDay();
+const weekList = ["星期天","星期一","星期二","星期三","星期四","星期五","星期六"]
+const weekName = weekList[week];
+const formatTime = `${year}年${month}月${day}日${weekName}`;
 async function main() {
   weChatBot
     // scan QR code for login
@@ -32,7 +39,7 @@ async function main() {
         // add your own task handlers over here to expand the bot ability!
         // e.g. if a message starts with "Hello", the bot sends "World!"
         if (message.text().startsWith("时间")) {
-          await message.say(time);
+          await message.say(formatTime);
           return;
         }
         // handle message for chatGPT bot
