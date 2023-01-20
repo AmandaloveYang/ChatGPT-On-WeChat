@@ -16,6 +16,7 @@ const week = time.getDay();
 const weekList = ["星期天","星期一","星期二","星期三","星期四","星期五","星期六"]
 const weekName = weekList[week];
 const formatTime = `${year}年${month}月${day}日${weekName}`;
+
 async function main() {
   weChatBot
     // scan QR code for login
