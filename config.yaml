@@ -1,1 +1,3 @@
-1
+openaiApiKey: "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"
+openaiOrganizationID: "org-XXXXXXXXXXXXXXX"
+chatgptTriggerKeyword: "你好:"
